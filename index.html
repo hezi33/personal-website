@@ -226,7 +226,7 @@
     }
     .about-text p:last-child { margin-bottom: 0; }
 
-    /* === 高亮数字卡片（chair-number-grid 变体） === */
+    /* === 高亮数字卡片 === */
     .highlights-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -482,6 +482,83 @@
       .reveal { opacity: 1; transform: none; transition: none; }
     }
 
+    /* === 编辑模式样式 === */
+    .edit-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 200;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(43,127,216,0.3);
+      transition: transform .2s, box-shadow .2s;
+      opacity: 0.5;
+    }
+    .edit-toggle:hover {
+      transform: scale(1.1);
+      opacity: 1;
+      box-shadow: 0 6px 24px rgba(43,127,216,0.4);
+    }
+    .edit-toggle.active {
+      background: var(--red);
+      opacity: 1;
+      animation: none;
+    }
+
+    /* 编辑模式提示 */
+    .edit-tooltip {
+      position: fixed;
+      bottom: 72px;
+      right: 20px;
+      z-index: 200;
+      background: var(--ink);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+      white-space: nowrap;
+    }
+    .edit-tooltip.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 可编辑元素的视觉提示 */
+    body.edit-mode [data-editable] {
+      cursor: text;
+      outline: 2px dashed transparent;
+      border-radius: 4px;
+      transition: outline-color 0.2s, background 0.2s;
+    }
+    body.edit-mode [data-editable]:hover {
+      outline-color: rgba(43,127,216,0.25);
+      background: rgba(43,127,216,0.04);
+    }
+    body.edit-mode [data-editable]:focus {
+      outline-color: var(--blue);
+      outline-style: solid;
+      background: rgba(43,127,216,0.06);
+    }
+
+    /* 页面标题标记（不可编辑的装饰元素在编辑模式下变淡） */
+    body.edit-mode .no-edit {
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
     /* === 响应式 === */
     @media (max-width: 900px) {
       .hero { min-height: auto; padding: 6rem 1.5rem 4rem; }
@@ -503,7 +580,7 @@
 
   <!-- ====== NAV ====== -->
   <nav>
-    <span class="nav-logo">YourName</span>
+    <span class="nav-logo" data-editable data-path="nav.logo">YourName</span>
     <div class="nav-links">
       <a href="#about">关于</a>
       <a href="#skills">技能</a>
@@ -511,53 +588,29 @@
     </div>
   </nav>
 
-  <!-- ====== HERO 全屏居中 ====== -->
+  <!-- ====== HERO ====== -->
   <section class="hero">
-    <div class="hero-avatar reveal">👤</div>
-    <span class="label-caps reveal reveal-d1">个人介绍 · 作品集</span>
-    <h1 class="reveal reveal-d1">你好，我是<span class="hl">你的名字</span></h1>
-    <p class="hero-subtitle reveal reveal-d2">一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者</p>
-    <div class="hero-meta reveal reveal-d3">
-      <span><span class="dot"></span>📍 城市名称</span>
-      <span><span class="dot"></span>💼 当前职位或领域</span>
-      <span><span class="dot"></span>🔗 社交链接占位</span>
+    <div class="hero-avatar reveal" data-editable data-path="hero.avatar">👤</div>
+    <span class="label-caps reveal reveal-d1" data-editable data-path="hero.label">个人介绍 · 作品集</span>
+    <h1 class="reveal reveal-d1">你好，我是<span class="hl" data-editable data-path="hero.name_highlight">你的名字</span></h1>
+    <p class="hero-subtitle reveal reveal-d2" data-editable data-path="hero.subtitle">一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者</p>
+    <div class="hero-meta reveal reveal-d3" id="heroMeta">
+      <!-- JS render -->
     </div>
   </section>
 
-  <!-- ====== ABOUT: 关于我 ====== -->
+  <!-- ====== ABOUT ====== -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">01</span>
-        <h2 class="section-title">关于我</h2>
+        <span class="section-number no-edit" data-editable data-path="about.section_number">01</span>
+        <h2 class="section-title no-edit" data-editable data-path="about.section_title">关于我</h2>
       </div>
-
-      <div class="about-layout reveal reveal-d1">
-        <div class="about-text">
-          <p>这里放第一段自我介绍。可以写你的背景、经历、目前在做的事情。建议 2-3 句话，不要太长。这个段落主要讲"你是谁"。</p>
-        </div>
-        <div class="about-text">
-          <p>这里放第二段自我介绍。可以写你的兴趣、关注的领域、做过的项目方向。让访客在 30 秒内对你有一个清晰的认识。</p>
-        </div>
+      <div class="about-layout reveal reveal-d1" id="aboutParagraphs">
+        <!-- JS render -->
       </div>
-
-      <!-- 高亮数字卡片 -->
-      <div class="highlights-grid reveal reveal-d2" style="margin-top: clamp(40px, 6vw, 80px);">
-        <div class="highlight-card">
-          <span class="hl-big-num">01</span>
-          <span class="hl-number">5+</span>
-          <span class="hl-label">年经验</span>
-        </div>
-        <div class="highlight-card">
-          <span class="hl-big-num">02</span>
-          <span class="hl-number">20+</span>
-          <span class="hl-label">完成项目</span>
-        </div>
-        <div class="highlight-card">
-          <span class="hl-big-num">03</span>
-          <span class="hl-number">3</span>
-          <span class="hl-label">擅长领域</span>
-        </div>
+      <div class="highlights-grid reveal reveal-d2" style="margin-top: clamp(40px, 6vw, 80px);" id="aboutHighlights">
+        <!-- JS render -->
       </div>
     </div>
   </section>
@@ -566,58 +619,21 @@
   <section class="dark-section">
     <div class="container reveal">
       <div class="quote-inner">
-        <p class="quote-text">这里放你的个人金句或座右铭。<em>强调部分</em>用 em 标签包裹，会在页面上显示为黄色高亮。</p>
-        <p class="quote-attr">— 你的名字</p>
+        <p class="quote-text" data-editable data-path="quote.text" data-html="true">这里放你的个人金句或座右铭。<em>强调部分</em>用 em 标签包裹，会在页面上显示为黄色高亮。</p>
+        <p class="quote-attr" data-editable data-path="quote.attribution">— 你的名字</p>
       </div>
     </div>
   </section>
 
-  <!-- ====== SKILLS: 技能标签 ====== -->
+  <!-- ====== SKILLS ====== -->
   <section class="section section--alt" id="skills">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">02</span>
-        <h2 class="section-title">技能标签</h2>
+        <span class="section-number no-edit" data-editable data-path="skills.section_number">02</span>
+        <h2 class="section-title no-edit" data-editable data-path="skills.section_title">技能标签</h2>
       </div>
-
-      <div class="skills-grid">
-        <!-- 技术栈 -->
-        <div class="skill-category-card reveal reveal-d1">
-          <span class="skill-cat-icon">💻</span>
-          <h3 class="skill-cat-name">技术栈</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-          </div>
-        </div>
-
-        <!-- 工具 -->
-        <div class="skill-category-card reveal reveal-d2">
-          <span class="skill-cat-icon">🔧</span>
-          <h3 class="skill-cat-name">工具</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">VS Code</span>
-          </div>
-        </div>
-
-        <!-- 领域 -->
-        <div class="skill-category-card reveal reveal-d3">
-          <span class="skill-cat-icon">🎯</span>
-          <h3 class="skill-cat-name">领域</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Web 开发</span>
-            <span class="skill-tag">产品设计</span>
-            <span class="skill-tag">AI 应用</span>
-            <span class="skill-tag">技术写作</span>
-          </div>
-        </div>
+      <div class="skills-grid" id="skillsGrid">
+        <!-- JS render -->
       </div>
     </div>
   </section>
@@ -626,34 +642,430 @@
   <section class="section">
     <div class="container">
       <div class="viral-pullquote reveal">
-        <p>最好的 AI 创作不是让机器替你思考，而是让机器帮你抵达那些独自一人到不了的地方。</p>
-        <span class="quote-source">— 来自 DATA.yaml Quote 数据</span>
+        <p data-editable data-path="pullquote.text">最好的 AI 创作不是让机器替你思考，而是让机器帮你抵达那些独自一人到不了的地方。</p>
+        <span class="quote-source" data-editable data-path="pullquote.source">— 来自 DATA.yaml Quote 数据</span>
       </div>
     </div>
   </section>
 
   <!-- ====== CTA 联系区 ====== -->
   <section class="cta-section" id="contact">
-    <h2 class="reveal">联系我</h2>
-    <p class="reveal reveal-d1">如果你对我的项目感兴趣，或者想一起合作，欢迎通过以下方式联系我。</p>
-
-    <div class="social-links reveal reveal-d2">
-      <a href="https://github.com/your-username" class="social-link">🔗 GitHub</a>
-      <a href="https://twitter.com/your-username" class="social-link">🐦 Twitter</a>
-      <a href="mailto:your-email@example.com" class="social-link">✉️ Email</a>
+    <h2 class="reveal no-edit" data-editable data-path="contact.title">联系我</h2>
+    <p class="reveal reveal-d1" data-editable data-path="contact.description">如果你对我的项目感兴趣，或者想一起合作，欢迎通过以下方式联系我。</p>
+    <div class="social-links reveal reveal-d2" id="socialLinks">
+      <!-- JS render -->
     </div>
-
-    <a href="mailto:your-email@example.com" class="cta-button reveal reveal-d2">发送邮件 →</a>
-    <p class="cta-note reveal reveal-d3">期待与你的交流</p>
+    <a class="cta-button reveal reveal-d2" id="ctaButton" href="mailto:your-email@example.com">
+      <span data-editable data-path="contact.cta_text">发送邮件 →</span>
+    </a>
+    <p class="cta-note reveal reveal-d3" data-editable data-path="contact.cta_note">期待与你的交流</p>
   </section>
 
   <!-- ====== Footer ====== -->
   <footer class="footer">
-    <p>© 2026 你的名字. Powered by Esther Design System.</p>
+    <p data-editable data-path="footer.text">© 2026 你的名字. Powered by Esther Design System.</p>
   </footer>
+
+  <!-- ====== 编辑模式按钮 ====== -->
+  <button class="edit-toggle" id="editToggle" title="切换编辑模式">✎</button>
+  <div class="edit-tooltip" id="editTooltip"></div>
 
   <!-- ====== Scripts ====== -->
   <script>
+  // ============================================================
+  // 📦 默认数据 — 在这里修改你的个人信息
+  // ============================================================
+  // 你也可以直接在页面上开启编辑模式（点右下角 ✎ 按钮）修改，
+  // 修改会自动保存到浏览器本地存储。
+  // ============================================================
+
+  const DEFAULT_DATA = {
+    nav: {
+      logo: 'YourName'
+    },
+    hero: {
+      avatar: '👤',
+      label: '个人介绍 · 作品集',
+      name_highlight: '你的名字',
+      subtitle: '一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者',
+      meta: [
+        '📍 城市名称',
+        '💼 当前职位或领域',
+        '🔗 社交链接占位'
+      ]
+    },
+    about: {
+      section_number: '01',
+      section_title: '关于我',
+      paragraphs: [
+        '这里放第一段自我介绍。可以写你的背景、经历、目前在做的事情。建议 2-3 句话，不要太长。这个段落主要讲"你是谁"。',
+        '这里放第二段自我介绍。可以写你的兴趣、关注的领域、做过的项目方向。让访客在 30 秒内对你有一个清晰的认识。'
+      ],
+      highlights: [
+        { number: '5+', label: '年经验' },
+        { number: '20+', label: '完成项目' },
+        { number: '3', label: '擅长领域' }
+      ]
+    },
+    quote: {
+      text: '这里放你的个人金句或座右铭。<em>强调部分</em>用 em 标签包裹，会在页面上显示为黄色高亮。',
+      attribution: '— 你的名字'
+    },
+    skills: {
+      section_number: '02',
+      section_title: '技能标签',
+      categories: [
+        { icon: '💻', name: '技术栈', tags: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'SQL'] },
+        { icon: '🔧', name: '工具', tags: ['Git', 'Docker', 'Figma', 'VS Code'] },
+        { icon: '🎯', name: '领域', tags: ['Web 开发', '产品设计', 'AI 应用', '技术写作'] }
+      ]
+    },
+    pullquote: {
+      text: '最好的 AI 创作不是让机器替你思考，而是让机器帮你抵达那些独自一人到不了的地方。',
+      source: '— 来自 DATA.yaml Quote 数据'
+    },
+    contact: {
+      title: '联系我',
+      description: '如果你对我的项目感兴趣，或者想一起合作，欢迎通过以下方式联系我。',
+      social: [
+        { icon: '🔗', name: 'GitHub', url: 'https://github.com/your-username' },
+        { icon: '🐦', name: 'Twitter', url: 'https://twitter.com/your-username' },
+        { icon: '✉️', name: 'Email', url: 'mailto:your-email@example.com' }
+      ],
+      cta_text: '发送邮件 →',
+      cta_url: 'mailto:your-email@example.com',
+      cta_note: '期待与你的交流'
+    },
+    footer: {
+      text: '© 2026 你的名字. Powered by Esther Design System.'
+    }
+  };
+
+  // ============================================================
+  // 🔄 数据加载（localStorage 覆盖默认值）
+  // ============================================================
+  const STORAGE_KEY = 'personal_website_data';
+
+  function loadData() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        return deepMerge(DEFAULT_DATA, JSON.parse(saved));
+      }
+    } catch (e) {
+      console.warn('无法读取本地存储数据，使用默认值', e);
+    }
+    return JSON.parse(JSON.stringify(DEFAULT_DATA)); // deep clone
+  }
+
+  function saveData(data) {
+    try {
+      // 只保存与默认值不同的字段（增量存储）
+      const diff = getDiff(DEFAULT_DATA, data);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(diff));
+    } catch (e) {
+      console.warn('无法保存数据到本地存储', e);
+    }
+  }
+
+  // 获取与默认值的差异
+  function getDiff(defaults, current, prefix) {
+    const diff = {};
+    for (const key of Object.keys(current)) {
+      const path = prefix ? `${prefix}.${key}` : key;
+      const dv = defaults[key];
+      const cv = current[key];
+
+      if (cv === undefined) continue;
+
+      if (Array.isArray(cv)) {
+        if (JSON.stringify(cv) !== JSON.stringify(dv)) {
+          diff[key] = cv;
+        }
+      } else if (typeof cv === 'object' && cv !== null && !Array.isArray(cv)) {
+        const subDiff = getDiff(dv || {}, cv, path);
+        if (Object.keys(subDiff).length > 0) {
+          diff[key] = subDiff;
+        }
+      } else {
+        if (cv !== dv) {
+          diff[key] = cv;
+        }
+      }
+    }
+    return diff;
+  }
+
+  // 深度合并
+  function deepMerge(base, override) {
+    const result = JSON.parse(JSON.stringify(base));
+    for (const key of Object.keys(override)) {
+      if (override[key] !== undefined && override[key] !== null && typeof override[key] === 'object' && !Array.isArray(override[key]) && base[key] !== undefined && typeof base[key] === 'object' && !Array.isArray(base[key])) {
+        result[key] = deepMerge(base[key], override[key]);
+      } else {
+        result[key] = override[key];
+      }
+    }
+    return result;
+  }
+
+  // ============================================================
+  // 🎨 页面渲染
+  // ============================================================
+  function renderPage(data) {
+    // Nav
+    setText('[data-path="nav.logo"]', data.nav.logo);
+
+    // Hero
+    setText('[data-path="hero.avatar"]', data.hero.avatar);
+    setText('[data-path="hero.label"]', data.hero.label);
+    setText('[data-path="hero.name_highlight"]', data.hero.name_highlight);
+    setText('[data-path="hero.subtitle"]', data.hero.subtitle);
+    document.title = `${data.hero.name_highlight} — 个人介绍`;
+
+    // Hero meta
+    const metaEl = document.getElementById('heroMeta');
+    if (metaEl) {
+      metaEl.innerHTML = data.hero.meta.map((text, i) =>
+        `<span data-editable data-path="hero.meta.${i}"><span class="dot"></span>${text}</span>`
+      ).join('');
+    }
+
+    // About
+    setText('[data-path="about.section_number"]', data.about.section_number);
+    setText('[data-path="about.section_title"]', data.about.section_title);
+    const aboutP = document.getElementById('aboutParagraphs');
+    if (aboutP) {
+      aboutP.innerHTML = data.about.paragraphs.map((text, i) =>
+        `<div class="about-text"><p data-editable data-path="about.paragraphs.${i}">${text}</p></div>`
+      ).join('');
+    }
+
+    // About highlights
+    const hlGrid = document.getElementById('aboutHighlights');
+    if (hlGrid) {
+      const decoNums = ['01', '02', '03'];
+      hlGrid.innerHTML = data.about.highlights.map((h, i) =>
+        `<div class="highlight-card">
+          <span class="hl-big-num no-edit">${decoNums[i]}</span>
+          <span class="hl-number" data-editable data-path="about.highlights.${i}.number">${h.number}</span>
+          <span class="hl-label" data-editable data-path="about.highlights.${i}.label">${h.label}</span>
+        </div>`
+      ).join('');
+    }
+
+    // Quote
+    const quoteTextEl = document.querySelector('[data-path="quote.text"]');
+    if (quoteTextEl) quoteTextEl.innerHTML = data.quote.text;
+    setText('[data-path="quote.attribution"]', data.quote.attribution);
+
+    // Skills
+    setText('[data-path="skills.section_number"]', data.skills.section_number);
+    setText('[data-path="skills.section_title"]', data.skills.section_title);
+    const skillsGrid = document.getElementById('skillsGrid');
+    if (skillsGrid) {
+      skillsGrid.innerHTML = data.skills.categories.map((cat, ci) =>
+        `<div class="skill-category-card reveal reveal-d${ci + 1}">
+          <span class="skill-cat-icon no-edit" data-editable data-path="skills.categories.${ci}.icon">${cat.icon}</span>
+          <h3 class="skill-cat-name" data-editable data-path="skills.categories.${ci}.name">${cat.name}</h3>
+          <div class="skill-tags" data-editable data-path="skills.categories.${ci}.tags" data-array="true">
+            ${cat.tags.map(tag => `<span class="skill-tag">${tag}</span>`).join('')}
+          </div>
+        </div>`
+      ).join('');
+    }
+
+    // Pull quote
+    setText('[data-path="pullquote.text"]', data.pullquote.text);
+    setText('[data-path="pullquote.source"]', data.pullquote.source);
+
+    // Contact
+    setText('[data-path="contact.title"]', data.contact.title);
+    setText('[data-path="contact.description"]', data.contact.description);
+    const socialEl = document.getElementById('socialLinks');
+    if (socialEl) {
+      socialEl.innerHTML = data.contact.social.map((s, i) =>
+        `<a href="${s.url}" class="social-link" data-editable data-path="contact.social.${i}.name" data-url-path="contact.social.${i}.url">${s.icon} ${s.name}</a>`
+      ).join('');
+    }
+    setText('[data-path="contact.cta_text"]', data.contact.cta_text);
+    const ctaBtn = document.getElementById('ctaButton');
+    if (ctaBtn) ctaBtn.href = data.contact.cta_url;
+    setText('[data-path="contact.cta_note"]', data.contact.cta_note);
+
+    // Footer
+    setText('[data-path="footer.text"]', data.footer.text);
+  }
+
+  function setText(selector, text) {
+    const el = document.querySelector(selector);
+    if (el && text !== undefined) el.textContent = text;
+  }
+
+  // ============================================================
+  // ✏️ 编辑模式
+  // ============================================================
+  let isEditMode = false;
+  let currentData = null;
+  const editToggle = document.getElementById('editToggle');
+  const editTooltip = document.getElementById('editTooltip');
+
+  function toggleEditMode() {
+    isEditMode = !isEditMode;
+    document.body.classList.toggle('edit-mode', isEditMode);
+    editToggle.classList.toggle('active', isEditMode);
+    editToggle.textContent = isEditMode ? '✓' : '✎';
+
+    if (isEditMode) {
+      showTooltip('编辑模式已开启 — 点击任意文字即可修改，改完自动保存');
+      makeAllEditable();
+    } else {
+      showTooltip('编辑模式已关闭 — 修改已自动保存');
+      removeAllEditable();
+      setTimeout(() => hideTooltip(), 2000);
+    }
+  }
+
+  function showTooltip(msg) {
+    editTooltip.textContent = msg;
+    editTooltip.classList.add('show');
+    setTimeout(() => hideTooltip(), 3000);
+  }
+
+  function hideTooltip() {
+    editTooltip.classList.remove('show');
+  }
+
+  function makeAllEditable() {
+    document.querySelectorAll('[data-editable]').forEach(el => {
+      el.contentEditable = 'true';
+      el.addEventListener('blur', handleEditBlur);
+      el.addEventListener('keydown', handleEditKeydown);
+    });
+  }
+
+  function removeAllEditable() {
+    document.querySelectorAll('[data-editable]').forEach(el => {
+      el.contentEditable = 'false';
+      el.removeEventListener('blur', handleEditBlur);
+      el.removeEventListener('keydown', handleEditKeydown);
+    });
+  }
+
+  function handleEditKeydown(e) {
+    // Enter 结束编辑（单行文本）
+    if (e.key === 'Enter' && !e.shiftKey && !e.target.dataset.html) {
+      e.preventDefault();
+      e.target.blur();
+    }
+    // Escape 取消编辑
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      e.target.blur();
+      renderPage(currentData); // 恢复原值
+    }
+  }
+
+  function handleEditBlur(e) {
+    const el = e.target;
+    const path = el.dataset.path;
+    if (!path) return;
+
+    const isHtml = el.dataset.html === 'true';
+    const isArray = el.dataset.array === 'true';
+    const urlPath = el.dataset.urlPath;
+
+    let newValue;
+    if (isArray) {
+      // 数组类型：按逗号或换行分割
+      const raw = el.textContent.trim();
+      newValue = raw.split(/[,，\n]+/).map(s => s.trim()).filter(Boolean);
+      // 重新渲染标签
+      el.innerHTML = newValue.map(tag => `<span class="skill-tag">${tag}</span>`).join('');
+    } else if (isHtml) {
+      newValue = el.innerHTML;
+    } else {
+      newValue = el.textContent.trim();
+    }
+
+    // 更新数据模型
+    setNestedValue(currentData, path, newValue);
+
+    // 如果是社交链接的名称，同步更新显示
+    if (urlPath) {
+      const url = getNestedValue(currentData, urlPath);
+      const socialIdx = path.match(/contact\.social\.(\d+)\.name/);
+      if (socialIdx) {
+        const i = parseInt(socialIdx[1]);
+        const icon = currentData.contact.social[i].icon;
+        el.textContent = `${icon} ${newValue}`;
+      }
+    }
+
+    // 保存到 localStorage
+    saveData(currentData);
+
+    // 更新特殊字段
+    if (path === 'hero.name_highlight') {
+      document.title = `${newValue} — 个人介绍`;
+    }
+    if (path === 'contact.cta_url' || (el.dataset.urlPath && path.includes('social'))) {
+      // 更新链接 href
+      const ctaBtn = document.getElementById('ctaButton');
+      if (ctaBtn) ctaBtn.href = currentData.contact.cta_url;
+    }
+
+    showTooltip(`已保存: ${path}`);
+    setTimeout(() => hideTooltip(), 1500);
+  }
+
+  // 点号路径设置嵌套值
+  function setNestedValue(obj, path, value) {
+    const keys = path.split('.');
+    let current = obj;
+    for (let i = 0; i < keys.length - 1; i++) {
+      const key = keys[i];
+      // 处理数组索引
+      if (/^\d+$/.test(keys[i + 1]) && !Array.isArray(current[key])) {
+        // 下一个key是数字，当前应该是数组
+      }
+      if (current[key] === undefined) {
+        current[key] = /^\d+$/.test(keys[i + 1]) ? [] : {};
+      }
+      current = current[key];
+    }
+    const lastKey = keys[keys.length - 1];
+    current[lastKey] = value;
+  }
+
+  function getNestedValue(obj, path) {
+    const keys = path.split('.');
+    let current = obj;
+    for (const key of keys) {
+      if (current === undefined || current === null) return undefined;
+      current = current[key];
+    }
+    return current;
+  }
+
+  // ============================================================
+  // 🚀 启动
+  // ============================================================
+  function init() {
+    currentData = loadData();
+    renderPage(currentData);
+
+    // 编辑按钮
+    editToggle.addEventListener('click', toggleEditMode);
+
+    // 键盘快捷键：Ctrl+E 切换编辑模式
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+        e.preventDefault();
+        toggleEditMode();
+      }
+    });
+
     // Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -663,12 +1075,19 @@
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 重新观察动态渲染后的元素
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }, 100);
 
     // Nav scroll effect
     window.addEventListener('scroll', () => {
       document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
     });
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
