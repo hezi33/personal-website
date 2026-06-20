@@ -1,0 +1,110 @@
+# ============================================================
+# 个人信息数据 — 个人介绍网站
+# ============================================================
+# 说明：
+#   - 此文件是网站展示内容的唯一数据源
+#   - AI 开发和前端渲染都读取此文件
+#   - 替换为真实信息后，页面内容自动更新
+#   - 支持占位文字，后续逐项替换
+# ============================================================
+# 版本: V1.0 | 最后更新: 2026-06-21
+# ============================================================
+
+# --- 基本信息 ---
+personal:
+  name: "你的名字"
+  name_en: "Your Name"
+  avatar: "assets/avatar-placeholder.jpg"
+  avatar_alt: "个人头像"
+
+# --- Hero 首屏 ---
+hero:
+  label: "个人介绍 · 作品集"
+  title_line1: "你好，我是"
+  title_highlight: "你的名字"
+  title_line2: ""
+  subtitle: "一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者"
+  meta_items:
+    - "📍 城市名称"
+    - "💼 当前职位或领域"
+    - "🔗 社交链接占位"
+
+# --- 关于我 ---
+about:
+  section_number: "01"
+  section_title: "关于我"
+  paragraphs:
+    - |
+      这里放第一段自我介绍。可以写你的背景、经历、目前在做的事情。
+      建议 2-3 句话，不要太长。这个段落主要讲"你是谁"。
+    - |
+      这里放第二段自我介绍。可以写你的兴趣、关注的领域、做过的项目方向。
+      让访客在 30 秒内对你有一个清晰的认识。
+  highlights:
+    - number: "5+"
+      label: "年经验"
+    - number: "20+"
+      label: "完成项目"
+    - number: "3"
+      label: "擅长领域"
+
+# --- 个人金句（深色面板展示） ---
+quote:
+  text: "这里放你的个人金句或座右铭。<em>强调部分</em>用 em 标签包裹，会在页面上显示为黄色高亮。"
+  attribution: "— 你的名字"
+
+# --- 技能标签 ---
+skills:
+  section_number: "02"
+  section_title: "技能标签"
+  categories:
+    - name: "技术栈"
+      icon: "💻"
+      items:
+        - "JavaScript"
+        - "TypeScript"
+        - "React"
+        - "Node.js"
+        - "Python"
+        - "SQL"
+    - name: "工具"
+      icon: "🔧"
+      items:
+        - "Git"
+        - "Docker"
+        - "Figma"
+        - "VS Code"
+    - name: "领域"
+      icon: "🎯"
+      items:
+        - "Web 开发"
+        - "产品设计"
+        - "AI 应用"
+        - "技术写作"
+
+# --- 联系方式 ---
+contact:
+  section_title: "联系我"
+  description: "如果你对我的项目感兴趣，或者想一起合作，欢迎通过以下方式联系我。"
+  cta_text: "发送邮件 →"
+  cta_url: "mailto:your-email@example.com"
+  social:
+    - name: "GitHub"
+      url: "https://github.com/your-username"
+      icon: "github"
+    - name: "Twitter"
+      url: "https://twitter.com/your-username"
+      icon: "twitter"
+    - name: "Email"
+      url: "mailto:your-email@example.com"
+      icon: "email"
+
+# --- SEO & Meta ---
+meta:
+  title: "你的名字 — 个人介绍"
+  description: "你的名字的个人介绍网站，了解我的背景、技能和作品。"
+  keywords: "个人网站,作品集,技术博客,全栈开发,产品设计"
+
+# --- 页脚 ---
+footer:
+  copyright: "© 2026 你的名字. Powered by Esther Design System."
