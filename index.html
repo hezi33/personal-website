@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>你的名字 — 个人介绍</title>
-  <meta name="description" content="你的名字的个人介绍网站，了解我的背景、技能和作品。">
-  <meta name="keywords" content="个人网站,作品集,技术博客,全栈开发,产品设计">
+  <title>吴丽芳 — 个人介绍</title>
+  <meta name="description" content="吴丽芳的个人介绍网站，电子信息硕士，数据分析和产品运营背景。">
+  <meta name="keywords" content="数据分析,产品运营,电子信息,吴丽芳">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,900;1,9..144,400&family=Caveat:wght@400;700&family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -590,7 +590,7 @@
 
   <!-- ====== HERO ====== -->
   <section class="hero">
-    <div class="hero-avatar reveal" data-editable data-path="hero.avatar">👤</div>
+    <div class="hero-avatar reveal" data-editable data-path="hero.avatar" data-html="true"><img src="assets/avatar.jpg" alt="吴丽芳" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
     <span class="label-caps reveal reveal-d1" data-editable data-path="hero.label">个人介绍 · 作品集</span>
     <h1 class="reveal reveal-d1">你好，我是<span class="hl" data-editable data-path="hero.name_highlight">你的名字</span></h1>
     <p class="hero-subtitle reveal reveal-d2" data-editable data-path="hero.subtitle">一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者</p>
@@ -681,63 +681,63 @@
 
   const DEFAULT_DATA = {
     nav: {
-      logo: 'YourName'
+      logo: 'WuLifang'
     },
     hero: {
-      avatar: '👤',
-      label: '个人介绍 · 作品集',
-      name_highlight: '你的名字',
-      subtitle: '一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者',
+      avatar: '<img src="assets/avatar.jpg" alt="吴丽芳" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">',
+      label: '数据分析 · 产品运营 · 个人主页',
+      name_highlight: '吴丽芳',
+      subtitle: '电子信息硕士，具备数据分析与产品运营双重背景。擅长用 Python 和 SQL 挖掘数据价值，以数据驱动产品优化与业务增长。',
       meta: [
-        '📍 城市名称',
-        '💼 当前职位或领域',
-        '🔗 社交链接占位'
+        '🎓 首都经济贸易大学 · 电子信息硕士',
+        '💼 网易 & 金山办公 · 实习经历',
+        '📊 数据分析 · 产品运营'
       ]
     },
     about: {
       section_number: '01',
       section_title: '关于我',
       paragraphs: [
-        '这里放第一段自我介绍。可以写你的背景、经历、目前在做的事情。建议 2-3 句话，不要太长。这个段落主要讲"你是谁"。',
-        '这里放第二段自我介绍。可以写你的兴趣、关注的领域、做过的项目方向。让访客在 30 秒内对你有一个清晰的认识。'
+        '硕士毕业于首都经济贸易大学电子信息专业，本科就读于北京理工大学珠海学院信息管理与信息系统专业。在校期间主修 Web 应用开发、Python 数据处理、机器学习、人工智能等课程，多次获得学业奖学金（一等奖 1 次、三等奖 1 次），具备扎实的计算机与信息管理基础。',
+        '先后在金山办公和网易传媒实习，负责数据分析与产品运营工作。在网易期间负责新闻数据日常监控与异常分析，报表准确率达 99%；在金山期间推动工程师学习考核参与度提升 30%，优质服务商续约率提升 40%。擅长从数据中发现业务洞察，推动产品优化落地。'
       ],
       highlights: [
-        { number: '5+', label: '年经验' },
-        { number: '20+', label: '完成项目' },
-        { number: '3', label: '擅长领域' }
+        { number: '硕士', label: '首都经济贸易大学' },
+        { number: '2段', label: '大厂实习（网易+金山）' },
+        { number: '5项', label: '竞赛获奖' }
       ]
     },
     quote: {
-      text: '这里放你的个人金句或座右铭。<em>强调部分</em>用 em 标签包裹，会在页面上显示为黄色高亮。',
-      attribution: '— 你的名字'
+      text: '用数据发现<em>问题</em>，用产品解决<em>问题</em>。持续学习，持续成长。',
+      attribution: '— 吴丽芳'
     },
     skills: {
       section_number: '02',
-      section_title: '技能标签',
+      section_title: '专业能力',
       categories: [
-        { icon: '💻', name: '技术栈', tags: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'SQL'] },
-        { icon: '🔧', name: '工具', tags: ['Git', 'Docker', 'Figma', 'VS Code'] },
-        { icon: '🎯', name: '领域', tags: ['Web 开发', '产品设计', 'AI 应用', '技术写作'] }
+        { icon: '📊', name: '数据分析', tags: ['Python', 'SQL', 'SPSS', 'Excel', '数据可视化', '报表制作'] },
+        { icon: '🛠️', name: '产品工具', tags: ['Axure', '墨刀', 'Visio', '微信开发者工具', 'HTML5', 'JavaScript'] },
+        { icon: '📜', name: '证书资质', tags: ['软考中级', '英语四级', '计算机二级', '蓝桥杯三等奖', '数学竞赛三等奖'] }
       ]
     },
     pullquote: {
-      text: '最好的 AI 创作不是让机器替你思考，而是让机器帮你抵达那些独自一人到不了的地方。',
-      source: '— 来自 DATA.yaml Quote 数据'
+      text: '在数据中寻找真相，在产品中创造价值。每一个数字背后，都是一个值得被理解的故事。',
+      source: '— 吴丽芳'
     },
     contact: {
       title: '联系我',
-      description: '如果你对我的项目感兴趣，或者想一起合作，欢迎通过以下方式联系我。',
+      description: '如果对我的项目感兴趣，或者想一起交流数据分析与产品运营，欢迎联系我。',
       social: [
-        { icon: '🔗', name: 'GitHub', url: 'https://github.com/your-username' },
-        { icon: '🐦', name: 'Twitter', url: 'https://twitter.com/your-username' },
-        { icon: '✉️', name: 'Email', url: 'mailto:your-email@example.com' }
+        { icon: '✉️', name: 'Email', url: 'mailto:13727097141@163.com' },
+        { icon: '🔗', name: 'GitHub', url: 'https://github.com/' },
+        { icon: '💼', name: 'LinkedIn', url: 'https://linkedin.com/' }
       ],
       cta_text: '发送邮件 →',
-      cta_url: 'mailto:your-email@example.com',
+      cta_url: 'mailto:13727097141@163.com',
       cta_note: '期待与你的交流'
     },
     footer: {
-      text: '© 2026 你的名字. Powered by Esther Design System.'
+      text: '© 2026 吴丽芳. Powered by Esther Design System.'
     }
   };
 
@@ -814,13 +814,13 @@
   // ============================================================
   function renderPage(data) {
     // Nav
-    setText('[data-path="nav.logo"]', data.nav.logo);
+    setContent('[data-path="nav.logo"]', data.nav.logo, false);
 
     // Hero
-    setText('[data-path="hero.avatar"]', data.hero.avatar);
-    setText('[data-path="hero.label"]', data.hero.label);
-    setText('[data-path="hero.name_highlight"]', data.hero.name_highlight);
-    setText('[data-path="hero.subtitle"]', data.hero.subtitle);
+    setContent('[data-path="hero.avatar"]', data.hero.avatar, true);
+    setContent('[data-path="hero.label"]', data.hero.label, false);
+    setContent('[data-path="hero.name_highlight"]', data.hero.name_highlight, false);
+    setContent('[data-path="hero.subtitle"]', data.hero.subtitle, false);
     document.title = `${data.hero.name_highlight} — 个人介绍`;
 
     // Hero meta
@@ -897,10 +897,13 @@
     setText('[data-path="footer.text"]', data.footer.text);
   }
 
-  function setText(selector, text) {
+  function setContent(selector, text, isHtml) {
     const el = document.querySelector(selector);
-    if (el && text !== undefined) el.textContent = text;
+    if (el && text !== undefined) {
+      if (isHtml) { el.innerHTML = text; } else { el.textContent = text; }
+    }
   }
+  function setText(selector, text) { setContent(selector, text, false); }
 
   // ============================================================
   // ✏️ 编辑模式

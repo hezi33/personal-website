@@ -1,33 +1,27 @@
 # ============================================================
 # 个人信息数据 — 个人介绍网站
 # ============================================================
-# 说明：
-#   - 此文件是网站展示内容的唯一数据源
-#   - AI 开发和前端渲染都读取此文件
-#   - 替换为真实信息后，页面内容自动更新
-#   - 支持占位文字，后续逐项替换
-# ============================================================
-# 版本: V1.0 | 最后更新: 2026-06-21
+# 版本: V1.1 | 最后更新: 2026-06-21
 # ============================================================
 
 # --- 基本信息 ---
 personal:
-  name: "你的名字"
-  name_en: "Your Name"
-  avatar: "assets/avatar-placeholder.jpg"
-  avatar_alt: "个人头像"
+  name: "吴丽芳"
+  name_en: "Wu Lifang"
+  avatar: "assets/avatar.jpg"
+  avatar_alt: "吴丽芳个人照片"
 
 # --- Hero 首屏 ---
 hero:
-  label: "个人介绍 · 作品集"
+  label: "数据分析 · 产品运营 · 个人主页"
   title_line1: "你好，我是"
-  title_highlight: "你的名字"
+  title_highlight: "吴丽芳"
   title_line2: ""
-  subtitle: "一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者"
+  subtitle: "电子信息硕士，具备数据分析与产品运营双重背景。擅长用 Python 和 SQL 挖掘数据价值，以数据驱动产品优化与业务增长。"
   meta_items:
-    - "📍 城市名称"
-    - "💼 当前职位或领域"
-    - "🔗 社交链接占位"
+    - "🎓 首都经济贸易大学 · 电子信息硕士"
+    - "💼 网易 & 金山办公 · 实习经历"
+    - "📊 数据分析 · 产品运营"
 
 # --- 关于我 ---
 about:
@@ -35,76 +29,77 @@ about:
   section_title: "关于我"
   paragraphs:
     - |
-      这里放第一段自我介绍。可以写你的背景、经历、目前在做的事情。
-      建议 2-3 句话，不要太长。这个段落主要讲"你是谁"。
+      硕士毕业于首都经济贸易大学电子信息专业，本科就读于北京理工大学珠海学院信息管理与信息系统专业。在校期间主修 Web 应用开发、Python 数据处理、机器学习、人工智能等课程，多次获得学业奖学金（一等奖 1 次、三等奖 1 次），具备扎实的计算机与信息管理基础。
     - |
-      这里放第二段自我介绍。可以写你的兴趣、关注的领域、做过的项目方向。
-      让访客在 30 秒内对你有一个清晰的认识。
+      先后在金山办公和网易传媒实习，负责数据分析与产品运营工作。在网易期间负责新闻数据日常监控与异常分析，报表准确率达 99%；在金山期间推动工程师学习考核参与度提升 30%，优质服务商续约率提升 40%。擅长从数据中发现业务洞察，推动产品优化落地。
   highlights:
-    - number: "5+"
-      label: "年经验"
-    - number: "20+"
-      label: "完成项目"
-    - number: "3"
-      label: "擅长领域"
+    - number: "硕士"
+      label: "首都经济贸易大学"
+    - number: "2段"
+      label: "大厂实习（网易+金山）"
+    - number: "5项"
+      label: "竞赛获奖"
 
-# --- 个人金句（深色面板展示） ---
+# --- 个人金句 ---
 quote:
-  text: "这里放你的个人金句或座右铭。<em>强调部分</em>用 em 标签包裹，会在页面上显示为黄色高亮。"
-  attribution: "— 你的名字"
+  text: "用数据发现<em>问题</em>，用产品解决<em>问题</em>。持续学习，持续成长。"
+  attribution: "— 吴丽芳"
 
 # --- 技能标签 ---
 skills:
   section_number: "02"
-  section_title: "技能标签"
+  section_title: "专业能力"
   categories:
-    - name: "技术栈"
-      icon: "💻"
+    - name: "数据分析"
+      icon: "📊"
       items:
-        - "JavaScript"
-        - "TypeScript"
-        - "React"
-        - "Node.js"
         - "Python"
         - "SQL"
-    - name: "工具"
-      icon: "🔧"
+        - "SPSS"
+        - "Excel"
+        - "数据可视化"
+        - "报表制作"
+    - name: "产品工具"
+      icon: "🛠️"
       items:
-        - "Git"
-        - "Docker"
-        - "Figma"
-        - "VS Code"
-    - name: "领域"
-      icon: "🎯"
+        - "Axure"
+        - "墨刀"
+        - "Visio"
+        - "微信开发者工具"
+        - "HTML5"
+        - "JavaScript"
+    - name: "证书资质"
+      icon: "📜"
       items:
-        - "Web 开发"
-        - "产品设计"
-        - "AI 应用"
-        - "技术写作"
+        - "软考中级"
+        - "英语四级"
+        - "计算机二级"
+        - "蓝桥杯三等奖"
+        - "数学竞赛三等奖"
 
 # --- 联系方式 ---
 contact:
   section_title: "联系我"
-  description: "如果你对我的项目感兴趣，或者想一起合作，欢迎通过以下方式联系我。"
+  description: "如果对我的项目感兴趣，或者想一起交流数据分析与产品运营，欢迎联系我。"
   cta_text: "发送邮件 →"
-  cta_url: "mailto:your-email@example.com"
+  cta_url: "mailto:13727097141@163.com"
   social:
-    - name: "GitHub"
-      url: "https://github.com/your-username"
-      icon: "github"
-    - name: "Twitter"
-      url: "https://twitter.com/your-username"
-      icon: "twitter"
     - name: "Email"
-      url: "mailto:your-email@example.com"
-      icon: "email"
+      url: "mailto:13727097141@163.com"
+      icon: "✉️"
+    - name: "GitHub"
+      url: "https://github.com/"
+      icon: "🔗"
+    - name: "LinkedIn"
+      url: "https://linkedin.com/"
+      icon: "💼"
 
 # --- SEO & Meta ---
 meta:
-  title: "你的名字 — 个人介绍"
-  description: "你的名字的个人介绍网站，了解我的背景、技能和作品。"
-  keywords: "个人网站,作品集,技术博客,全栈开发,产品设计"
+  title: "吴丽芳 — 个人介绍"
+  description: "吴丽芳的个人介绍网站，电子信息硕士，数据分析和产品运营背景。"
+  keywords: "数据分析,产品运营,电子信息,吴丽芳"
 
 # --- 页脚 ---
 footer:
-  copyright: "© 2026 你的名字. Powered by Esther Design System."
+  copyright: "© 2026 吴丽芳. Powered by Esther Design System."
