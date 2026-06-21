@@ -685,7 +685,7 @@
     },
     hero: {
       avatar: '<img src="assets/avatar.jpg" alt="吴丽芳" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">',
-      label: 'AI产品经理 · 数据分析',
+      label: '',
       name_highlight: '吴丽芳',
       subtitle: '电子信息硕士，兼具数据分析与产品运营双重背景。关注 AI 技术落地应用，擅长用数据驱动产品决策与业务增长。',
       meta: [
@@ -726,9 +726,10 @@
     },
     contact: {
       title: '联系我',
-      description: '如果对我的项目感兴趣，或者想一起交流数据分析与产品运营，欢迎联系我。',
+      description: '如果对我的项目感兴趣，或者想一起交流产品相关的内容，欢迎联系我。',
       social: [
         { icon: '✉️', name: 'Email', url: 'mailto:13727097141@163.com' },
+        { icon: '📞', name: '电话', url: 'tel:13727097141' },
         { icon: '🔗', name: 'GitHub', url: 'https://github.com/' }
       ],
       cta_text: '发送邮件 →',
@@ -817,7 +818,11 @@
 
     // Hero
     setContent('[data-path="hero.avatar"]', data.hero.avatar, true);
-    setContent('[data-path="hero.label"]', data.hero.label, false);
+    const labelEl = document.querySelector('[data-path="hero.label"]');
+    if (labelEl) {
+      labelEl.textContent = data.hero.label;
+      labelEl.style.display = data.hero.label ? '' : 'none';
+    }
     setContent('[data-path="hero.name_highlight"]', data.hero.name_highlight, false);
     setContent('[data-path="hero.subtitle"]', data.hero.subtitle, false);
     document.title = `${data.hero.name_highlight} — 个人介绍`;

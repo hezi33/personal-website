@@ -13,7 +13,7 @@ personal:
 
 # --- Hero 首屏 ---
 hero:
-  label: "AI产品经理 · 数据分析"
+  label: ""
   title_line1: "你好，我是"
   title_highlight: "吴丽芳"
   title_line2: ""
@@ -80,13 +80,16 @@ skills:
 # --- 联系方式 ---
 contact:
   section_title: "联系我"
-  description: "如果对我的项目感兴趣，或者想一起交流数据分析与产品运营，欢迎联系我。"
+  description: "如果对我的项目感兴趣，或者想一起交流产品相关的内容，欢迎联系我。"
   cta_text: "发送邮件 →"
   cta_url: "mailto:13727097141@163.com"
   social:
     - name: "Email"
       url: "mailto:13727097141@163.com"
       icon: "✉️"
+    - name: "电话"
+      url: "tel:13727097141"
+      icon: "📞"
     - name: "GitHub"
       url: "https://github.com/"
       icon: "🔗"
