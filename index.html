@@ -593,7 +593,7 @@
     <div class="hero-avatar reveal" data-editable data-path="hero.avatar" data-html="true"><img src="assets/avatar.jpg" alt="吴丽芳" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
     <span class="label-caps reveal reveal-d1" data-editable data-path="hero.label">AI产品经理 · 数据分析</span>
     <h1 class="reveal reveal-d1">你好，我是<span class="hl" data-editable data-path="hero.name_highlight">你的名字</span></h1>
-    <p class="hero-subtitle reveal reveal-d2" data-editable data-path="hero.subtitle">电子信息硕士，兼具数据分析与产品运营双重背景。关注 AI 技术落地应用，擅长用数据驱动产品决策与业务增长。</p>
+    <p class="hero-subtitle reveal reveal-d2" data-editable data-path="hero.subtitle" style="display:none"></p>
     <div class="hero-meta reveal reveal-d3" id="heroMeta">
       <!-- JS render -->
     </div>
@@ -685,13 +685,13 @@
     },
     hero: {
       avatar: '<img src="assets/avatar.jpg" alt="吴丽芳" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">',
-      label: '',
+      label: 'AI产品经理 · 数据分析',
       name_highlight: '吴丽芳',
-      subtitle: '电子信息硕士，兼具数据分析与产品运营双重背景。关注 AI 技术落地应用，擅长用数据驱动产品决策与业务增长。',
+      subtitle: '',
       meta: [
-        '🎓 首都经济贸易大学 · 电子信息硕士',
-        '💼 网易 & 金山办公 · 实习经历',
-        '📊 数据分析 · 产品运营'
+        '📍 北京',
+        '💼 AI产品经理',
+        '🔗 13727097141'
       ]
     },
     about: {
@@ -824,7 +824,11 @@
       labelEl.style.display = data.hero.label ? '' : 'none';
     }
     setContent('[data-path="hero.name_highlight"]', data.hero.name_highlight, false);
-    setContent('[data-path="hero.subtitle"]', data.hero.subtitle, false);
+    const subEl = document.querySelector('[data-path="hero.subtitle"]');
+    if (subEl) {
+      subEl.textContent = data.hero.subtitle;
+      subEl.style.display = data.hero.subtitle ? '' : 'none';
+    }
     document.title = `${data.hero.name_highlight} — 个人介绍`;
 
     // Hero meta
@@ -1063,8 +1067,18 @@
   // 🚀 启动
   // ============================================================
   function init() {
+    // 强制回到顶部
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    // 兜底：渲染完后再回顶
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 50);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 300);
+
     currentData = loadData();
     renderPage(currentData);
+
+    // 防止浏览器恢复滚动位置
+    window.addEventListener('beforeunload', () => { window.scrollTo({ top: 0, behavior: 'instant' }); });
 
     // 编辑按钮
     editToggle.addEventListener('click', toggleEditMode);

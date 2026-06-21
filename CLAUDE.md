@@ -1,7 +1,7 @@
 # CLAUDE.md — AI 开发铁律
 
-> **核心理念**: 限制 AI 的自由度 = 保证输出质量。  
-> **读我时机**: 修改此项目的任何文件之前，必须完整阅读本文档。  
+> **核心理念**: 限制 AI 的自由度 = 保证输出质量。
+> **读我时机**: 修改此项目的任何文件之前，必须完整阅读本文档。
 > **铁律性质**: 本文档列出的规则是硬约束，不允许以"我觉得这样更好"为理由违背。
 
 ---
@@ -104,25 +104,25 @@ Step 7: 更新进度
 
 ### 4.1 绝对禁止
 
-| 禁止 | 原因 |
-|------|------|
-| HTML 默认 `<blockquote>` | 浏览器默认缩进样式千篇一律 |
-| `border-left` 引用块 | 过于常见，AI 模板感 |
-| 无样式 `<ul>` / `<ol>` | 必须用 components.md 里的列表组件 |
-| 默认 `<table>` | 必须用组件库里的表格样式 |
-| 默认 `<button>` | 必须使用 `.cta-button` 样式 |
-| 纯黑 `#000` 或纯白 `#fff` | 无温度感 |
-| `box-shadow` 千篇一律的卡片 | 卡片必须有区分度 |
-| glassmorphism（毛玻璃仅限 Nav） | AI 模板感第一来源 |
+| 禁止                            | 原因                              |
+| ------------------------------- | --------------------------------- |
+| HTML 默认 `<blockquote>`      | 浏览器默认缩进样式千篇一律        |
+| `border-left` 引用块          | 过于常见，AI 模板感               |
+| 无样式 `<ul>` / `<ol>`      | 必须用 components.md 里的列表组件 |
+| 默认 `<table>`                | 必须用组件库里的表格样式          |
+| 默认 `<button>`               | 必须使用 `.cta-button` 样式     |
+| 纯黑 `#000` 或纯白 `#fff`   | 无温度感                          |
+| `box-shadow` 千篇一律的卡片   | 卡片必须有区分度                  |
+| glassmorphism（毛玻璃仅限 Nav） | AI 模板感第一来源                 |
 
 ### 4.2 必须使用
 
-| 场景 | 必须使用 |
-|------|----------|
-| 引用/金句 | `components.md` 的 Pull Quote 组件 |
-| 卡片 | `components.md` 的卡片组件（杂志裁切/编号主导/侧边Icon） |
-| 列表 | `components.md` 的列表组件 |
-| CTA 按钮 | `.cta-button`（蓝底白字）或 `.cta-button--yellow`（深色背景上） |
+| 场景      | 必须使用                                                            |
+| --------- | ------------------------------------------------------------------- |
+| 引用/金句 | `components.md` 的 Pull Quote 组件                                |
+| 卡片      | `components.md` 的卡片组件（杂志裁切/编号主导/侧边Icon）          |
+| 列表      | `components.md` 的列表组件                                        |
+| CTA 按钮  | `.cta-button`（蓝底白字）或 `.cta-button--yellow`（深色背景上） |
 
 ---
 
@@ -209,23 +209,22 @@ Step 7: 更新进度
 
 ## 9. 参考文件速查
 
-| 文件 | 路径 | 读我时机 |
-|------|------|----------|
-| 品牌基因 | `esther-design-system-main/brand-dna.md` | 每次必读 |
-| 场景规范 | `esther-design-system-main/references/scene-landing.md` | 做 Section 布局前 |
-| 组件库 | `esther-design-system-main/references/components.md` | 选组件前 |
-| 布局库 | `esther-design-system-main/references/layouts.md` | 选布局前 |
-| 检查清单 | `esther-design-system-main/references/checklist.md` | 交付前 |
-| 模板文件 | `esther-design-system-main/demo-landing.html` | 写代码前（起点模板） |
-| 数据文档 | `DATA.yaml` | 需要个人信息时 |
-| 进度文档 | `docs/PROCESS.md` | 每次开始/结束任务时 |
-| 产品需求 | `docs/PRD.md` | 了解功能边界时 |
-| 技术方案 | `docs/TECHNICAL_DESIGN.md` | 做技术决策时 |
+| 文件     | 路径                                                      | 读我时机             |
+| -------- | --------------------------------------------------------- | -------------------- |
+| 品牌基因 | `esther-design-system-main/brand-dna.md`                | 每次必读             |
+| 场景规范 | `esther-design-system-main/references/scene-landing.md` | 做 Section 布局前    |
+| 组件库   | `esther-design-system-main/references/components.md`    | 选组件前             |
+| 布局库   | `esther-design-system-main/references/layouts.md`       | 选布局前             |
+| 检查清单 | `esther-design-system-main/references/checklist.md`     | 交付前               |
+| 模板文件 | `esther-design-system-main/demo-landing.html`           | 写代码前（起点模板） |
+| 数据文档 | `DATA.yaml`                                             | 需要个人信息时       |
+| 进度文档 | `docs/PROCESS.md`                                       | 每次开始/结束任务时  |
+| 产品需求 | `docs/PRD.md`                                           | 了解功能边界时       |
+| 技术方案 | `docs/TECHNICAL_DESIGN.md`                              | 做技术决策时         |
 
 ---
 
 ## 10. 核心底线（刻在脑子里）
 
-> **截图发到 Twitter 上，不能被人评论"又是 AI 做的"。**  
-> **一眼就能看出这是"不二的"个人网站。**  
+> **截图发到 Twitter 上，不能被人评论"又是 AI 做的"。**
 > **温暖、有品质、像人做的、不像模板。**
