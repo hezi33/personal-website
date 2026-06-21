@@ -13,11 +13,11 @@ personal:
 
 # --- Hero 首屏 ---
 hero:
-  label: "数据分析 · 产品运营 · 个人主页"
+  label: "AI产品经理 · 数据分析"
   title_line1: "你好，我是"
   title_highlight: "吴丽芳"
   title_line2: ""
-  subtitle: "电子信息硕士，具备数据分析与产品运营双重背景。擅长用 Python 和 SQL 挖掘数据价值，以数据驱动产品优化与业务增长。"
+  subtitle: "电子信息硕士，兼具数据分析与产品运营双重背景。关注 AI 技术落地应用，擅长用数据驱动产品决策与业务增长。"
   meta_items:
     - "🎓 首都经济贸易大学 · 电子信息硕士"
     - "💼 网易 & 金山办公 · 实习经历"
@@ -90,9 +90,6 @@ contact:
     - name: "GitHub"
       url: "https://github.com/"
       icon: "🔗"
-    - name: "LinkedIn"
-      url: "https://linkedin.com/"
-      icon: "💼"
 
 # --- SEO & Meta ---
 meta:

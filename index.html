@@ -591,9 +591,9 @@
   <!-- ====== HERO ====== -->
   <section class="hero">
     <div class="hero-avatar reveal" data-editable data-path="hero.avatar" data-html="true"><img src="assets/avatar.jpg" alt="吴丽芳" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
-    <span class="label-caps reveal reveal-d1" data-editable data-path="hero.label">个人介绍 · 作品集</span>
+    <span class="label-caps reveal reveal-d1" data-editable data-path="hero.label">AI产品经理 · 数据分析</span>
     <h1 class="reveal reveal-d1">你好，我是<span class="hl" data-editable data-path="hero.name_highlight">你的名字</span></h1>
-    <p class="hero-subtitle reveal reveal-d2" data-editable data-path="hero.subtitle">一句话身份标签，描述你做什么、关注什么领域。例如：全栈开发者 / 产品设计师 / AI 技术探索者</p>
+    <p class="hero-subtitle reveal reveal-d2" data-editable data-path="hero.subtitle">电子信息硕士，兼具数据分析与产品运营双重背景。关注 AI 技术落地应用，擅长用数据驱动产品决策与业务增长。</p>
     <div class="hero-meta reveal reveal-d3" id="heroMeta">
       <!-- JS render -->
     </div>
@@ -685,9 +685,9 @@
     },
     hero: {
       avatar: '<img src="assets/avatar.jpg" alt="吴丽芳" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">',
-      label: '数据分析 · 产品运营 · 个人主页',
+      label: 'AI产品经理 · 数据分析',
       name_highlight: '吴丽芳',
-      subtitle: '电子信息硕士，具备数据分析与产品运营双重背景。擅长用 Python 和 SQL 挖掘数据价值，以数据驱动产品优化与业务增长。',
+      subtitle: '电子信息硕士，兼具数据分析与产品运营双重背景。关注 AI 技术落地应用，擅长用数据驱动产品决策与业务增长。',
       meta: [
         '🎓 首都经济贸易大学 · 电子信息硕士',
         '💼 网易 & 金山办公 · 实习经历',
@@ -721,16 +721,15 @@
       ]
     },
     pullquote: {
-      text: '在数据中寻找真相，在产品中创造价值。每一个数字背后，都是一个值得被理解的故事。',
-      source: '— 吴丽芳'
+      text: '最好的 AI 创作不是让机器替你思考，而是让机器帮你抵达那些独自一人到不了的地方。',
+      source: ''
     },
     contact: {
       title: '联系我',
       description: '如果对我的项目感兴趣，或者想一起交流数据分析与产品运营，欢迎联系我。',
       social: [
         { icon: '✉️', name: 'Email', url: 'mailto:13727097141@163.com' },
-        { icon: '🔗', name: 'GitHub', url: 'https://github.com/' },
-        { icon: '💼', name: 'LinkedIn', url: 'https://linkedin.com/' }
+        { icon: '🔗', name: 'GitHub', url: 'https://github.com/' }
       ],
       cta_text: '发送邮件 →',
       cta_url: 'mailto:13727097141@163.com',
@@ -877,7 +876,11 @@
 
     // Pull quote
     setText('[data-path="pullquote.text"]', data.pullquote.text);
-    setText('[data-path="pullquote.source"]', data.pullquote.source);
+    const pqSource = document.querySelector('[data-path="pullquote.source"]');
+    if (pqSource) {
+      pqSource.textContent = data.pullquote.source;
+      pqSource.style.display = data.pullquote.source ? '' : 'none';
+    }
 
     // Contact
     setText('[data-path="contact.title"]', data.contact.title);
